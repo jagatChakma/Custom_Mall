@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/reg_email_hading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/reg_user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="yourmail@mail.com"
+                android:layout_below="@+id/reg_email_hading"
+                android:inputType="textEmailAddress"
+                android:textSize="22sp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/reg_fullname_hading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Full name"
+                android:layout_below="@+id/reg_user_email"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/reg_fullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="FristName LastName"
+                android:layout_below="@+id/reg_fullname_hading"
+                android:textSize="22sp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/reg_password_hading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:layout_below="@+id/reg_fullname"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/reg_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="********(at least 8)"
+                android:layout_below="@+id/reg_password_hading"
+                android:textSize="22sp"
+                android:padding="10dp"
+                android:inputType="textPassword"/>
+
+            <TextView
+                android:id="@+id/reg_con_password_hading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirm Password"
+                android:layout_below="@+id/reg_password"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/reg_con_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="********"
+                android:layout_below="@+id/reg_con_password_hading"
+                android:textSize="22sp"
+                android:padding="10dp"
+                android:inputType="textPassword"/>
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Log In"
+                android:layout_below="@+id/reg_con_password"
+                android:textSize="22sp"
+                android:padding="15dp"
+                android:layout_marginTop="100dp"
+                android:enabled="false"/>
+
+            <TextView
+                android:id="@+id/reg_option_or"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Or"
+                android:layout_below="@+id/register_button"
+                android:layout_centerHorizontal="true"
+                android:textSize="18sp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/signin_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already habe an account? Sign In!"
+                android:layout_below="@+id/reg_option_or"
+                android:layout_centerHorizontal="true"
+                android:textSize="22sp"
+                android:padding="10dp"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>
