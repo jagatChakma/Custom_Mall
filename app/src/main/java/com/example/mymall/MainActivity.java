@@ -1,13 +1,8 @@
 package com.example.mymall;
 
-import android.app.Fragment;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.mymall.ui.cart.CartFragment;
-import com.example.mymall.ui.home.HomeFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.view.MenuItem;
 import android.view.View;
@@ -26,8 +21,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+//import static com.example.mymall.RegisterActivity.setSignUpFragment;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView actionBarLogo;
@@ -101,7 +100,34 @@ public class MainActivity extends AppCompatActivity {
         }else if (id == R.id.main_notification_icon){
             Toast.makeText(this, "Tuch- om notification", Toast.LENGTH_SHORT).show();
         }else if (id == R.id.main_cart_icon){
-            Toast.makeText(this, "Tuch- om cart", Toast.LENGTH_SHORT).show();
+
+            final Dialog signInDialog = new Dialog(MainActivity.this);
+            signInDialog.setContentView(R.layout.sign_in_dialog);
+            signInDialog.setCancelable(true);
+            signInDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            Button dialogSignIn = signInDialog.findViewById(R.id.cancel_button);
+            Button dialogSignUp = signInDialog.findViewById(R.id.ok_button);
+
+            final Intent regisIntent = new Intent(MainActivity.this, RegisterActivity.class);
+
+            dialogSignIn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    signInDialog.dismiss();
+//                    setSignUpFragment = false;
+                    startActivity(regisIntent);
+                }
+            });
+            dialogSignUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    signInDialog.dismiss();
+//                    setSignUpFragment = true;
+                    startActivity(regisIntent);
+                }
+            });
+            signInDialog.show();
         }
         return super.onOptionsItemSelected(item);
     }

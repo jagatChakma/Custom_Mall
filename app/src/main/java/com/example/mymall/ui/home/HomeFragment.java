@@ -89,20 +89,14 @@ public class HomeFragment extends Fragment {
 
         ////////////////////// banner slider list
         List<SliderModel> sliderModelList = new ArrayList<SliderModel>();
-        sliderModelList.add(new SliderModel(R.drawable.common_full_open_on_phone, "#F0F0F0"));  // may be have to edit
-        sliderModelList.add(new SliderModel(R.drawable.mail,"#333B3E"));
-
-        sliderModelList.add(new SliderModel(R.drawable.common_full_open_on_phone,"#F0F0F0"));
-        sliderModelList.add(new SliderModel(R.drawable.mail,"#333B3E"));
-        sliderModelList.add(new SliderModel(R.drawable.common_full_open_on_phone,"#F0F0F0"));
-        sliderModelList.add(new SliderModel(R.drawable.mail,"#333B3E"));
-        sliderModelList.add(new SliderModel(R.drawable.common_full_open_on_phone,"#F0F0F0"));
-        sliderModelList.add(new SliderModel(R.drawable.mail,"#333B3E"));
-        sliderModelList.add(new SliderModel(R.drawable.common_full_open_on_phone,"#F0F0F0"));
-        sliderModelList.add(new SliderModel(R.drawable.mail,"#333B3E"));
-
-        sliderModelList.add(new SliderModel(R.drawable.common_full_open_on_phone,"#F0F0F0"));
-        sliderModelList.add(new SliderModel(R.drawable.mail,"#333B3E") );
+        sliderModelList.add(new SliderModel(R.drawable.a,"#F0F0F0"));
+        sliderModelList.add(new SliderModel(R.drawable.b,"#333B3E"));
+        sliderModelList.add(new SliderModel(R.drawable.c,"#F0F0F0"));
+        sliderModelList.add(new SliderModel(R.drawable.d,"#333B3E"));
+        sliderModelList.add(new SliderModel(R.drawable.e,"#F0F0F0"));
+        sliderModelList.add(new SliderModel(R.drawable.f,"#333B3E"));
+        sliderModelList.add(new SliderModel(R.drawable.aa,"#F0F0F0"));
+        sliderModelList.add(new SliderModel(R.drawable.ab,"#333B3E"));
         //////////////////////banner slider list end
 
         //////////////////////// HORIZONTAL PRODUCT list
