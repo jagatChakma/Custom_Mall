@@ -3,8 +3,11 @@ package com.example.mymall;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -13,9 +16,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -38,6 +43,12 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private LinearLayout rateNowContainer;
 
     private Button buyNowButton;
+    private Button coupenRedeemButton;
+
+    //dialog
+    public static TextView coupenTitle, coupenExpiryDate, coupenBody;
+    private static RecyclerView coupensRecyclerView;
+    private static LinearLayout selectedCoupen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +68,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productDetailsViewpager = findViewById(R.id.product_details_viewpager);
 
         buyNowButton = findViewById(R.id.buy_now_button);
+        coupenRedeemButton = findViewById(R.id.coupen_redemption_btn);
 
         List<Integer> productImages = new ArrayList<>();
         productImages.add(R.drawable.mail);
@@ -123,6 +135,67 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
 
+        coupenRedeemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog checkCoupenPriceDialog = new Dialog(ProductDetailsActivity.this);
+                checkCoupenPriceDialog.setContentView(R.layout.coupen_redeem_dialog);
+                checkCoupenPriceDialog.setCancelable(true);
+                checkCoupenPriceDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                //
+                ImageView toggleRecyclerView = checkCoupenPriceDialog.findViewById(R.id.toggle_recyclerView);
+                coupensRecyclerView = checkCoupenPriceDialog.findViewById(R.id.coupens_recyclerView);
+                selectedCoupen = checkCoupenPriceDialog.findViewById(R.id.selected_coupen);
+
+                coupenTitle = checkCoupenPriceDialog.findViewById(R.id.coupen_title);
+                coupenExpiryDate = checkCoupenPriceDialog.findViewById(R.id.coupen_validity);
+                coupenBody = checkCoupenPriceDialog.findViewById(R.id.coupen_body);
+
+                TextView orginalPrice = checkCoupenPriceDialog.findViewById(R.id.original_price);
+                TextView discountedPrice = checkCoupenPriceDialog.findViewById(R.id.discounted_price);
+
+                //............
+                LinearLayoutManager layoutManager = new LinearLayoutManager(ProductDetailsActivity.this);
+                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                coupensRecyclerView.setLayoutManager(layoutManager);
+
+                List<RewardModel> rewardModelList = new ArrayList<>();
+                rewardModelList.add(new RewardModel("Product title1","Date and time1","Coupen body frome compani1"));
+                rewardModelList.add(new RewardModel("Product title2","Date and time2","Coupen body frome compani2"));
+                rewardModelList.add(new RewardModel("Product title3","Date and time3","Coupen body frome compani3"));
+                rewardModelList.add(new RewardModel("Product title4","Date and time4","Coupen body frome compani4"));
+                rewardModelList.add(new RewardModel("Product title5","Date and time5","Coupen body frome compani5"));
+                rewardModelList.add(new RewardModel("Product title","Date and time","Coupen body frome compani"));
+                rewardModelList.add(new RewardModel("Product title","Date and time","Coupen body frome compani"));
+                rewardModelList.add(new RewardModel("Product title","Date and time","Coupen body frome compani"));
+
+                RewardsAdapter rewardsAdapter = new RewardsAdapter(rewardModelList, true);
+                coupensRecyclerView.setAdapter(rewardsAdapter);
+                rewardsAdapter.notifyDataSetChanged();
+                //......................
+
+                toggleRecyclerView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showDialogRecyclerView();
+                    }
+                });
+
+                checkCoupenPriceDialog.show();
+            }
+        });
+
+    }
+
+    public static void showDialogRecyclerView(){
+        if (coupensRecyclerView.getVisibility() == View.GONE){
+            coupensRecyclerView.setVisibility(View.VISIBLE);
+            selectedCoupen.setVisibility(View.GONE);
+        }else {
+            coupensRecyclerView.setVisibility(View.GONE);
+            selectedCoupen.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setRating(int starPosition) {

@@ -49,7 +49,7 @@ public class RewardsFragment extends Fragment {
         rewardModelList.add(new RewardModel("Product title","Date and time","Coupen body frome compani"));
         rewardModelList.add(new RewardModel("Product title","Date and time","Coupen body frome compani"));
 
-        RewardsAdapter rewardsAdapter = new RewardsAdapter(rewardModelList);
+        RewardsAdapter rewardsAdapter = new RewardsAdapter(rewardModelList, false);
         rewardRecyclerView.setAdapter(rewardsAdapter);
         rewardsAdapter.notifyDataSetChanged();
 

@@ -73,15 +73,12 @@ public class HorizontalProductScrollAdapter extends RecyclerView.Adapter<Horizon
         private void setProductImage(int resourse){
             productImage.setImageResource(resourse);
         }
-
         private void setProductTitle(String title){
             productTitle.setText(title);
         }
-
         private void setProductDiscription(String discription){
             productDiscription.setText(discription);
         }
-
         private void setProductPric(String pric){
             productPric.setText(pric);
         }
